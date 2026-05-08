@@ -641,9 +641,10 @@ GameObject:
   - component: {fileID: 644783817}
   - component: {fileID: 644783819}
   - component: {fileID: 644783818}
+  - component: {fileID: 644783820}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -989,6 +990,19 @@ CircleCollider2D:
   m_Offset: {x: -0.043295264, y: 0}
   serializedVersion: 2
   m_Radius: 0.3953656
+--- !u!114 &644783820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644783808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a95371d8e69c2746a82012725b30596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limiteCaida: -10
 --- !u!1001 &883342568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1239,6 +1253,10 @@ PrefabInstance:
     - target: {fileID: 4468600073923807512, guid: 64b2b5242792b1a42a33e79687d3bb16, type: 3}
       propertyPath: m_Name
       value: Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468600073923807512, guid: 64b2b5242792b1a42a33e79687d3bb16, type: 3}
+      propertyPath: m_TagString
+      value: Spike
       objectReference: {fileID: 0}
     - target: {fileID: 8051715650324809926, guid: 64b2b5242792b1a42a33e79687d3bb16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24840,6 +24858,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1934110283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934110285}
+  - component: {fileID: 1934110284}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1934110284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934110283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f51dccb08d931546b96621dfc1b17ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1934110285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934110283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.411636, y: -8.44745, z: -0.0017221649}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2039136689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25449,3 +25511,4 @@ SceneRoots:
   - {fileID: 1399757147}
   - {fileID: 2115198962}
   - {fileID: 8123880981476436712}
+  - {fileID: 1934110285}
