@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public float velocidad = 5f;
     public float fuerzaSalto = 7f;
 
-    [Header("Suelo")]
-    public float longitudRaycast = 0.5f;
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public float groundRadius = 0.2f;
     public LayerMask capaSuelo;
 
     [Header("Referencias")]
@@ -70,19 +71,11 @@ public class PlayerMovement : MonoBehaviour
 
     void DetectarSuelo()
     {
-        Vector2 origen = new Vector2(
-            transform.position.x,
-            transform.position.y - 0.5f
-        );
-
-        RaycastHit2D hit = Physics2D.Raycast(
-            origen,
-            Vector2.down,
-            longitudRaycast,
+        enSuelo = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundRadius,
             capaSuelo
         );
-
-        enSuelo = hit.collider != null;
     }
 
     void Saltar()
@@ -191,20 +184,16 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    // Visualizar raycast
-    private void OnDrawGizmos()
+    // Visualizar Ground Check
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        if (groundCheck == null) return;
 
-        Vector3 origen = new Vector3(
-            transform.position.x,
-            transform.position.y - 0.5f,
-            0
-        );
+        Gizmos.color = Color.green;
 
-        Gizmos.DrawLine(
-            origen,
-            origen + Vector3.down * longitudRaycast
+        Gizmos.DrawWireSphere(
+            groundCheck.position,
+            groundRadius
         );
     }
 }
