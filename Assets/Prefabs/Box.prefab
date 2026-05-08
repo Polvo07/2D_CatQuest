@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 962577594565978711}
   - component: {fileID: 2758588559439630029}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
