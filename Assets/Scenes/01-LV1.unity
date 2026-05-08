@@ -313,7 +313,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 2.6555839
+  orthographic size: 3.6388924
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -680,8 +680,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   animator: {fileID: 644783809}
---- !u!70 &644783815
-CapsuleCollider2D:
+--- !u!61 &644783815
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -712,9 +712,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005659759, y: 0}
-  m_Size: {x: 0.53812623, y: 0.64}
-  m_Direction: 0
+  m_Offset: {x: -0.003076315, y: 0.06722587}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.52693033, y: 0.52512825}
+  m_EdgeRadius: 0
 --- !u!1 &1085464163
 GameObject:
   m_ObjectHideFlags: 0
