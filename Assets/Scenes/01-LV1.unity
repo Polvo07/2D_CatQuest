@@ -25310,16 +25310,28 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.566618
+      value: 22.89
       objectReference: {fileID: 0}
     - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3209986
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0645311
+      value: 0.091339
       objectReference: {fileID: 0}
     - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25348,6 +25360,18 @@ PrefabInstance:
     - target: {fileID: 2669839781985202241, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190138211459725458, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.273
+      objectReference: {fileID: 0}
+    - target: {fileID: 8109177652738168055, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170206265023339467, guid: 2fcd39db8b00ea34f95375b6d0d11689, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
