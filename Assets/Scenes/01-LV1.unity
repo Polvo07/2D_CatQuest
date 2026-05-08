@@ -678,7 +678,7 @@ MonoBehaviour:
   longitudRaycast: 0.2
   capaSuelo:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   animator: {fileID: 644783809}
 --- !u!70 &644783815
 CapsuleCollider2D:
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 1414531387}
   - component: {fileID: 1414531386}
   - component: {fileID: 1414531388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suelo
   m_TagString: Ground
   m_Icon: {fileID: 0}
