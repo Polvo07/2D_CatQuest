@@ -44,16 +44,27 @@ public class PlayerMovement : MonoBehaviour
 
         DetectarSuelo();
 
-        Animaciones();
+        Movimiento();
+
+        Saltar();
 
         GirarSprite();
 
-        Saltar();
+        Animaciones();
 
         Ataque();
     }
 
-    void FixedUpdate()
+    void DetectarSuelo()
+    {
+        enSuelo = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundRadius,
+            capaSuelo
+        );
+    }
+
+    void Movimiento()
     {
         float velocidadActual = velocidad;
 
@@ -66,15 +77,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(
             movimiento * velocidadActual,
             rb.velocity.y
-        );
-    }
-
-    void DetectarSuelo()
-    {
-        enSuelo = Physics2D.OverlapCircle(
-            groundCheck.position,
-            groundRadius,
-            capaSuelo
         );
     }
 
@@ -92,10 +94,13 @@ public class PlayerMovement : MonoBehaviour
     void GirarSprite()
     {
         if (movimiento > 0 && !mirandoDerecha)
+        {
             Girar();
-
+        }
         else if (movimiento < 0 && mirandoDerecha)
+        {
             Girar();
+        }
     }
 
     void Girar()
@@ -113,19 +118,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
 
-        // Movimiento
         bool estaMoviendose = movimiento != 0;
 
         animator.SetBool("IsMoving", estaMoviendose);
 
-        // Correr
         bool corriendo =
             Input.GetKey(KeyCode.LeftShift) &&
             estaMoviendose;
 
         animator.SetBool("IsRunning", corriendo);
 
-        // Salto
         animator.SetBool("IsJumping", !enSuelo);
 
         // Meow
@@ -176,7 +178,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Reiniciar escena
     void ReiniciarNivel()
     {
         SceneManager.LoadScene(
@@ -184,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    // Visualizar Ground Check
+    // Visualización del Ground Check
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;
