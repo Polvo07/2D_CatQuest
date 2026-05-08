@@ -88,4 +88,17 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject, 1f);
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerDeath player = collision.gameObject.GetComponent<PlayerDeath>();
+
+            if (player != null)
+            {
+                player.ReiniciarNivel();
+            }
+        }
+    }
 }
