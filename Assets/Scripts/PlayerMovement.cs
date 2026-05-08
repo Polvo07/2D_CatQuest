@@ -43,6 +43,14 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2(movimiento * velocidad, rb.velocity.y);
+        float velocidadActual = velocidad;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            velocidadActual *= 1.5f;
+        }
+
+        rb.velocity = new Vector2(movimiento * velocidadActual, rb.velocity.y);
     }
 
     void DetectarSuelo()
@@ -90,11 +98,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
 
-        // Movimiento
-        animator.SetBool("IsPushing", movimiento != 0);
+        // Movimiento básico
+        bool estaMoviendose = movimiento != 0;
+
+        animator.SetBool("IsMoving", estaMoviendose);
+
+        // Running (shift)
+        bool corriendo = Input.GetKey(KeyCode.LeftShift) && estaMoviendose;
+
+        animator.SetBool("IsRunning", corriendo);
 
         // Salto
         animator.SetBool("IsJumping", !enSuelo);
+
+        // Meow
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Meow");
+        }
     }
 
     private void OnDrawGizmos()
