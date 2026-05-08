@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float fuerzaSalto = 7f;
 
     [Header("Suelo")]
-    public float longitudRaycast = 0.2f;
+    public float longitudRaycast = 0.5f;
     public LayerMask capaSuelo;
 
     [Header("Referencias")]
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         if (animator == null) return;
 
         // Movimiento
-        animator.SetBool("IsPushing \"Y\"", movimiento != 0);
+        animator.SetBool("IsPushing", movimiento != 0);
 
         // Salto
         animator.SetBool("IsJumping", !enSuelo);
