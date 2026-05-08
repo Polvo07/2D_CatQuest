@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public float velocidad = 5f;
     public float fuerzaSalto = 7f;
 
-    [Header("Suelo")]
-    public float longitudRaycast = 0.5f;
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public float groundRadius = 0.2f;
     public LayerMask capaSuelo;
 
     [Header("Referencias")]
@@ -43,16 +44,27 @@ public class PlayerMovement : MonoBehaviour
 
         DetectarSuelo();
 
-        Animaciones();
+        Movimiento();
+
+        Saltar();
 
         GirarSprite();
 
-        Saltar();
+        Animaciones();
 
         Ataque();
     }
 
-    void FixedUpdate()
+    void DetectarSuelo()
+    {
+        enSuelo = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundRadius,
+            capaSuelo
+        );
+    }
+
+    void Movimiento()
     {
         float velocidadActual = velocidad;
 
@@ -66,23 +78,6 @@ public class PlayerMovement : MonoBehaviour
             movimiento * velocidadActual,
             rb.velocity.y
         );
-    }
-
-    void DetectarSuelo()
-    {
-        Vector2 origen = new Vector2(
-            transform.position.x,
-            transform.position.y - 0.5f
-        );
-
-        RaycastHit2D hit = Physics2D.Raycast(
-            origen,
-            Vector2.down,
-            longitudRaycast,
-            capaSuelo
-        );
-
-        enSuelo = hit.collider != null;
     }
 
     void Saltar()
@@ -99,10 +94,13 @@ public class PlayerMovement : MonoBehaviour
     void GirarSprite()
     {
         if (movimiento > 0 && !mirandoDerecha)
+        {
             Girar();
-
+        }
         else if (movimiento < 0 && mirandoDerecha)
+        {
             Girar();
+        }
     }
 
     void Girar()
@@ -120,19 +118,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
 
-        // Movimiento
         bool estaMoviendose = movimiento != 0;
 
         animator.SetBool("IsMoving", estaMoviendose);
 
-        // Correr
         bool corriendo =
             Input.GetKey(KeyCode.LeftShift) &&
             estaMoviendose;
 
         animator.SetBool("IsRunning", corriendo);
 
-        // Salto
         animator.SetBool("IsJumping", !enSuelo);
 
         // Meow
@@ -183,7 +178,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Reiniciar escena
     void ReiniciarNivel()
     {
         SceneManager.LoadScene(
@@ -191,20 +185,16 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    // Visualizar raycast
-    private void OnDrawGizmos()
+    // Visualización del Ground Check
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        if (groundCheck == null) return;
 
-        Vector3 origen = new Vector3(
-            transform.position.x,
-            transform.position.y - 0.5f,
-            0
-        );
+        Gizmos.color = Color.green;
 
-        Gizmos.DrawLine(
-            origen,
-            origen + Vector3.down * longitudRaycast
+        Gizmos.DrawWireSphere(
+            groundCheck.position,
+            groundRadius
         );
     }
 }
