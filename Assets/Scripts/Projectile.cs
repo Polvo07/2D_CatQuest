@@ -8,34 +8,41 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
 
+    void Start()
+    {
         Destroy(gameObject, lifeTime);
     }
 
     public void SetDirection(float direction)
     {
+        if (rb == null)
+        {
+            Debug.LogError("Falta Rigidbody2D en el proyectil");
+            return;
+        }
+
         rb.velocity = new Vector2(
             direction * speed,
             0
         );
 
-        // Voltear sprite
+        // Girar sprite
         if (direction < 0)
         {
             Vector3 escala = transform.localScale;
-
             escala.x *= -1;
-
             transform.localScale = escala;
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Enemigos
+        // Enemigo
         if (collision.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
@@ -43,7 +50,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Suelo o paredes
+        // Suelo
         if (collision.CompareTag("Ground"))
         {
             Destroy(gameObject);

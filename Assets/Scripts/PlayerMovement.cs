@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -119,16 +120,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
 
+        // Movimiento
         bool estaMoviendose = movimiento != 0;
 
         animator.SetBool("IsMoving", estaMoviendose);
 
+        // Correr
         bool corriendo =
             Input.GetKey(KeyCode.LeftShift) &&
             estaMoviendose;
 
         animator.SetBool("IsRunning", corriendo);
 
+        // Salto
         animator.SetBool("IsJumping", !enSuelo);
 
         // Meow
@@ -170,6 +174,24 @@ public class PlayerMovement : MonoBehaviour
         projectileScript.SetDirection(direccion);
     }
 
+    // Detectar púas
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Spike"))
+        {
+            ReiniciarNivel();
+        }
+    }
+
+    // Reiniciar escena
+    void ReiniciarNivel()
+    {
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().buildIndex
+        );
+    }
+
+    // Visualizar raycast
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
